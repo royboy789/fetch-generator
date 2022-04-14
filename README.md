@@ -13,3 +13,4 @@ A generator to create JavaScript `fetch()` code
 
 * Package npm runners better
 * Use webpack to create a localhost instance
+* Add __+__ to data and headers allowing for more entries
