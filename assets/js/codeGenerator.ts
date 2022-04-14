@@ -17,11 +17,6 @@ export const codeGenerator = () => {
 		selectionStyle: 'text',
 	});
 
-	// editor.setOptions({
-	// 	autoScrollEditorIntoView: true,
-	// 	copyWithEmptySelection: true,
-	// });
-
 	// update code
 	function update() {
 		let fetchCode = '';
@@ -38,23 +33,29 @@ export const codeGenerator = () => {
 		fetchCode = `const data = await fetch('${url}', {\n`;
 
 		if (method && method !== '-1') {
-			fetchCode += `  method: ${method},\n`;
-		}
-
-		// data
-		if (data.length && method !== 'GET') {
-			const toStringify = {};
-			data.forEach((dat) => {
-				toStringify[dat.key] = dat.value;
-			});
-			fetchCode += `  body: '${JSON.stringify(toStringify)}'\n`;
+			fetchCode += `  method: '${method}',\n`;
 		}
 
 		// headers
 		if (headers.length) {
 			console.log(headers);
+			fetchCode += `  headers: {\n`;
+			headers.forEach((header) => {
+				fetchCode += `    '${header.key}': '${header.value}',\n`;
+			});
+			fetchCode += `  },\n`;
 		}
 
+		// data - NOT GET
+		if (data.length && method !== 'GET') {
+			const toStringify = {};
+			data.forEach((dat) => {
+				toStringify[dat.key] = dat.value;
+			});
+			fetchCode += `  body: '${JSON.stringify(toStringify)}',\n`;
+		}
+
+		// END
 		fetchCode += '});';
 		editor.setValue(fetchCode);
 	}
