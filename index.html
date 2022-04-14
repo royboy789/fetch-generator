@@ -4,12 +4,69 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="dist/js/script.js"></script>
+  <link rel="stylesheet" href="dist/css/style.css" />
   <title>Fetch Generator</title>
 </head>
-<body>
+<body class="p-0 m-0">
+<main id="main" class="flex row w-3/4 mx-auto mt-20 shadow-inner">
+  <section class="generator w-1/2 border-r-2 border-r-red-600 p-5">
+    <form id="fetch-generator-form">
+      <div class="flex row w-full">
+        <label for="url" class="block w-1/4">URL</label>
+        <input type="url" name="url" id="url" placeholder="http://api.url"   pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?" class="url inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <hr class="my-5" />
+      <div class="flex row w-full">
+        <label for="method" class="block w-1/4">Method</label>
+        <select name="method" id="method" class="method block w-1/4 p-2">
+          <option value="-1">Choose Method</option>
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+      </div>
+      <hr class="my-5" />
+      <label for="data" class="inline-block mb-5">Data</label>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <hr class="my-5" />
+      <label for="headers" class="inline-block mb-5">Headers</label>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <div class="flex row w-full mb-5">
+        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
+      </div>
+      <input type="submit" value="Generate" class="bg-gray-300 rounded-md py-2 px-6 cursor-pointer" />
+    </form>
+  </section>
+  <section class="code w-1/2 p-5">
+    <div id="code" class="h-full text-lg">const data = await fetch();</div>
+  </section>
+</main>
 
-  
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js" integrity="sha512-6ts6Fu561/yzWvD6uwQp3XVYwiWNpWnZ0hdeQrETqtnQiGjTfOS06W76aUDnq51hl1SxXtJaqy7IsZ3oP/uZEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

@@ -3,8 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    
+    "build": "10up-toolkit build",
+    "start": "10up-toolkit build --watch",
+    "tailwind": "npx tailwindcss -i ./assets/css/style.css -o ./dist/css/style.css --watch"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "10up-toolkit": "^3.1.0",
+    "autoprefixer": "^10.4.4",
+    "tailwindcss": "^3.0.24"
+  },
+  "10up-toolkit": {
+    "entry": {
+      "script": "./assets/js/script.ts"
+    }
+  },
+  "dependencies": {
+    "ace-code-editor": "^1.2.3"
+  }
 }
