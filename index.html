@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,65 +9,106 @@
   <link rel="stylesheet" href="dist/css/style.css" />
   <title>Fetch Generator</title>
 </head>
-<body class="p-0 m-0">
-<main id="main" class="flex row w-3/4 mx-auto mt-20 shadow-inner">
-  <section class="generator w-1/2 border-r-2 border-r-red-600 p-5">
-    <form id="fetch-generator-form">
-      <div class="flex row w-full">
-        <label for="url" class="block w-1/4">URL</label>
-        <input type="url" name="url" id="url" placeholder="http://api.url"   pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?" class="url inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <hr class="my-5" />
-      <div class="flex row w-full">
-        <label for="method" class="block w-1/4">Method</label>
-        <select name="method" id="method" class="method block w-1/4 p-2">
-          <option value="-1">Choose Method</option>
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="DELETE">DELETE</option>
-        </select>
-      </div>
-      <hr class="my-5" />
-      <label for="data" class="inline-block mb-5">Data</label>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key" class="data-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="data_values[]" placeholder="value" class="data-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <hr class="my-5" />
-      <label for="headers" class="inline-block mb-5">Headers</label>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <div class="flex row w-full mb-5">
-        <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header" class="header-key inline-block w-full bg-gray-100 p-2" /></span>
-        <input type="text" name="header_values[]" placeholder="value" class="header-value inline-block w-1/4 bg-gray-100 p-2"/>
-      </div>
-      <input type="submit" value="Generate" class="bg-gray-300 rounded-md py-2 px-6 cursor-pointer" />
-    </form>
-  </section>
-  <section class="code w-1/2 p-5">
-    <div id="code" class="h-full text-lg">const data = await fetch();</div>
-  </section>
-</main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js" integrity="sha512-6ts6Fu561/yzWvD6uwQp3XVYwiWNpWnZ0hdeQrETqtnQiGjTfOS06W76aUDnq51hl1SxXtJaqy7IsZ3oP/uZEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<body class="p-0 m-0">
+  <header class="w-3/4 mx-auto py-5">
+    <h1 class="text-5xl">JavaScript Fetch Generator</h1>
+  </header>
+  <section class="w-3/4 mx-auto py-5 text-xl">
+    <p class="leading-4">
+      <strong>APIs</strong> can be the foundation for data of your next JavaScript application, or use an API to enhance your existing application by bringing in new, relevant data.
+    </p>
+    <p class="leading-4">
+      One of the most common ways to get or <em>fetch</em> data is to use the JavaScript <a class="text-blue-800 underline" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener noreferrer">fetch</a> function.
+    </p>
+    <h3 class="font-bold text-3xl leading-loose">Glossary</h3>
+    <ul>
+      <li><strong>URL</strong> - The URl or Uniform Resource Locator is the address to the API endpoint, similar to any other URL it will start with <em>http://</em> or <em>https://</em></em></li>
+      <li><strong>Method</strong> - This is the HTTP Request method that you will be using, to learn more about HTTP Methods read <a class="text-blue-800 underline" href="https://rapidapi.com/learn/rest-apis/introduction/what-is-http" target="_blank" rel="noopener noreferrer">RapidAPI's Learn Article</a></li>
+      <li><strong>Data</strong> - This is they key/value pairs for data you want to send</li>
+      <li><strong>Headers</strong> - HTTP Headers are another way to send information for the client or server with the request and contain information for logic like <strong>Authentication</strong> or <strong>Content-Type</strong></li>
+    </ul>
+  </section>
+  <main id="main" class="flex row w-3/4 mx-auto mt-20 shadow-inner rounded-sm">
+    <section class="generator w-1/2 border-r-2 border-r-red-600 p-5">
+      <form id="fetch-generator-form">
+        <div class="flex row w-full">
+          <label for="url" class="block w-1/4">URL</label>
+          <input type="url" name="url" id="url" placeholder="http://api.url"
+            pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+            class="url inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <hr class="my-5" />
+        <div class="flex row w-full">
+          <label for="method" class="block w-1/4">Method</label>
+          <select name="method" id="method" class="method block w-1/4 p-2">
+            <option value="-1">Choose Method</option>
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+        </div>
+        <hr class="my-5" />
+        <label for="data" class="inline-block mb-5">Data</label>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key"
+              class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="data_values[]" placeholder="value"
+            class="data-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key"
+              class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="data_values[]" placeholder="value"
+            class="data-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key"
+              class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="data_values[]" placeholder="value"
+            class="data-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="data_keys[]" placeholder="key"
+              class="data-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="data_values[]" placeholder="value"
+            class="data-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <hr class="my-5" />
+        <label for="headers" class="inline-block mb-5">Headers</label>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header"
+              class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="header_values[]" placeholder="value"
+            class="header-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header"
+              class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="header_values[]" placeholder="value"
+            class="header-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <div class="flex row w-full mb-5">
+          <span class="inline-block w-1/4 pr-2"><input type="text" name="header_keys[]" placeholder="Request Header"
+              class="header-key inline-block w-full bg-gray-100 p-2" /></span>
+          <input type="text" name="header_values[]" placeholder="value"
+            class="header-value inline-block w-1/4 bg-gray-100 p-2" />
+        </div>
+        <input type="submit" value="Generate" class="bg-gray-300 rounded-md py-2 px-6 cursor-pointer" />
+      </form>
+    </section>
+    <section class="code w-1/2 p-5">
+      <div id="code" class="h-full text-lg">const data = await fetch();</div>
+    </section>
+  </main>
+  <footer class="py-10 w-3/4 mx-auto text-center text-sm">
+    &copy; 2022
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"
+    integrity="sha512-6ts6Fu561/yzWvD6uwQp3XVYwiWNpWnZ0hdeQrETqtnQiGjTfOS06W76aUDnq51hl1SxXtJaqy7IsZ3oP/uZEg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>

@@ -38,7 +38,6 @@ export const codeGenerator = () => {
 
 		// headers
 		if (headers.length) {
-			console.log(headers);
 			fetchCode += `  headers: {\n`;
 			headers.forEach((header) => {
 				fetchCode += `    '${header.key}': '${header.value}',\n`;
@@ -56,7 +55,8 @@ export const codeGenerator = () => {
 		}
 
 		// END
-		fetchCode += '});';
+		fetchCode += '});\n';
+		fetchCode += 'console.log(data.json());';
 		editor.setValue(fetchCode);
 	}
 
@@ -65,22 +65,18 @@ export const codeGenerator = () => {
 	return {
 		updateUrl: (newUrl: string) => {
 			url = newUrl;
-			console.log(`updating url to ${url}`);
 			update();
 		},
 		updateMethod: (newMethod: string) => {
 			method = newMethod;
-			console.log(`updating method to ${method}`);
 			update();
 		},
 		updateData: (newData: Record<string, string>[]) => {
 			data = newData;
-			console.log(`updating data`);
 			update();
 		},
 		updateHeaders: (newHeaders: Record<string, string>[]) => {
 			headers = newHeaders;
-			console.log(`updating headers`);
 			update();
 		},
 	};
